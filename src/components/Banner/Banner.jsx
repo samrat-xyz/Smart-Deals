@@ -5,7 +5,7 @@ import { FaSearch } from "react-icons/fa";
 
 function Banner() {
   return (
-    <div className="relative w-full h-[550px] sm:h-[400px] flex items-center justify-center overflow-hidden bg-gradient-to-r from-[#9F62F2] to-[#E0F8F5]">
+    <div className="relative w-full h-[600px] sm:h-[400px] flex items-center justify-center overflow-hidden bg-gradient-to-r from-[#9F62F2] to-[#E0F8F5]">
       {/* Left Image */}
       <img
         src={leftHero}
@@ -22,7 +22,7 @@ function Banner() {
 
       {/* Text Overlay */}
       <div className="relative z-10 text-center max-w-6xl px-4 space-y-6">
-        <h1 className="text-4xl sm:text-5xl font-bold text-white drop-shadow-lg leading-snug">
+        <h1 className="text-4xl sm:text-5xl font-bold  drop-shadow-lg leading-snug">
           Deal your <span className="primary-color">Products</span> <br />
           in a <span className="primary-color">Smart</span> way!
         </h1>

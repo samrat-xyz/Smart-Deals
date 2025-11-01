@@ -70,7 +70,7 @@ function Navbar() {
             {links}
           </ul>
         </div>
-        <a className=" btn-ghost text-xl">Smart Deals</a>
+        <a className=" btn-ghost text-3xl font-bold">Smart <span className="primary-color">Deals</span></a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
