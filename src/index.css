@@ -2,3 +2,11 @@
 @plugin "daisyui" {
   themes: light --default;
 }
+
+.btn-primary {
+  @apply bg-linear-to-r from-[#632EE3] to-[#9F62F2]
+}
+
+.primary-color{
+  @apply text-[#632EE3]
+}
