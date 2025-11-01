@@ -54,7 +54,8 @@ function AuthProvider({ children }) {
     googleLogin,
     loginUser,
     signOutUser,
-    user
+    user,
+    loading
   };
   return <AuthContext value={userAuth}>{children}</AuthContext>;
 }

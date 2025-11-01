@@ -1,18 +1,26 @@
-import React from 'react'
-import Navbar from '../components/Navbar/Navbar'
-import { Outlet } from 'react-router'
+import React, { useContext } from "react";
+import Navbar from "../components/Navbar/Navbar";
+import { Outlet } from "react-router";
+import { AuthContext } from "../context/AuthContext";
+import Loading from "../components/loading/Loading";
 
 function RootLayout() {
+  
+  const { loading } = useContext(AuthContext);
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <div>
       <header>
-        <Navbar></Navbar>
+        <Navbar />
       </header>
       <main>
-        <Outlet></Outlet>
+        <Outlet />
       </main>
     </div>
-  )
+  );
 }
 
-export default RootLayout
+export default RootLayout;

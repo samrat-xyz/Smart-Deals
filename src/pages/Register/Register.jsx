@@ -27,9 +27,25 @@ function Register() {
   // Sign up or login with google
 
   const handleLoginGoogle = () =>{
-    googleLogin().then((result)=>{
+    googleLogin()
+    .then((result)=>{
       console.log(result.user)
-      alert("Google Login Successfully")
+      // displayName,email
+      const user = {
+        name : result.user.displayName,
+        email : result.user.email
+      }
+      fetch('http://localhost:3030/users',{
+        method:"POST",
+        headers:{
+          "content-type" : "application/json"
+        },
+        body:JSON.stringify(user)
+      })
+      .then(res => res.json())
+      .then(data =>{
+        console.log(data)
+      })
       // navigate('/')
     }).catch((error)=>{
       console.log(error)
