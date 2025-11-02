@@ -19,8 +19,8 @@ function ProductsCard({ product }) {
         <p>
           {product.description}
         </p>
-       <button className="border p-2 border-primary-color primary-color font-semibold">
-        <Link >View Details</Link>
+       <button className="border p-2 border-primary-color primary-color font-semibold cursor-pointer">
+        <Link to={`/products-details/${product._id}`} >View Details</Link>
        </button>
       </div>
     </div>
