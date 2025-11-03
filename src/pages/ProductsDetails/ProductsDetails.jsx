@@ -47,6 +47,7 @@ function ProductsDetails() {
             timer: 1500,
           });
           bids._id = data.insertedId;
+          bids.sort((a,b)=>b._bid_price - a._bid_price)
           const newBid = [...bids,bid];
           setBids(newBid)
         }
@@ -286,7 +287,7 @@ function ProductsDetails() {
               </tr>
             </thead>
             {bids.map((bid,index) => (
-              <tbody>
+              <tbody key={bid._id}>
                 {/* row 1 */}
                 <tr>
                   <th>

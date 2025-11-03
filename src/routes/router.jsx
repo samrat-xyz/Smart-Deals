@@ -6,6 +6,7 @@ import Register from "../pages/Register/Register";
 import MyProducts from "../pages/MyProducts/MyProducts";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 import ProductsDetails from "../pages/ProductsDetails/ProductsDetails";
+import MyBids from "../pages/MyBids/MyBids";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
         fetch(`http://localhost:3030/products/${params.id}`),
         element:<ProductsDetails></ProductsDetails>
       },
+      {
+        path:'/my-bids',
+        Component:MyBids
+      }
     ],
   },
 ]);

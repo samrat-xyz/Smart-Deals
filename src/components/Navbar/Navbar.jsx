@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 function Navbar() {
   const { user,signOutUser } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   const handleSignOut = () =>{
     signOutUser()
   }
@@ -34,7 +34,7 @@ function Navbar() {
         <NavLink to='/my-products'>My Products</NavLink>
       </li>
       <li>
-        <NavLink>My Bids</NavLink>
+        <NavLink to='/my-bids'>My Bids</NavLink>
       </li>
       <li>
         <NavLink>Create Products</NavLink>
