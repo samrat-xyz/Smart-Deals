@@ -8,12 +8,16 @@ function MyBids() {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3030/bids?email=${user?.email}`)
+      fetch(`http://localhost:3030/bids?email=${user?.email}`,{
+        headers:{
+          authorization : `Bearer ${user.accessToken}`
+        }
+      })
         .then((res) => res.json())
         .then((data) => setBid(data))
         .catch((err) => console.error("Fetch error:", err));
     }
-  }, [user?.email]);
+  }, [user]);
 
   const handleRemoveBid = (_id) => {
     Swal.fire({

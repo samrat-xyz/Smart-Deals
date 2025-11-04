@@ -12,42 +12,55 @@ import { GoogleAuthProvider } from "firebase/auth";
 
 const provider = new GoogleAuthProvider();
 function AuthProvider({ children }) {
-
-  const [user,setUser] = useState(null)
-  const [loading,setLoading] = useState(true)
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   // Creating user
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
   // Login with google
   const googleLogin = () => {
-    setLoading(true)
+    setLoading(true);
     return signInWithPopup(auth, provider);
   };
 
   // Login User
   const loginUser = (email, password) => {
-    setLoading(true)
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   // signOut user
   const signOutUser = () => {
-    setLoading(true)
+    setLoading(true);
     return signOut(auth);
   };
 
   // User observer
 
   useEffect(() => {
-  const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-    setLoading(false);
-  });
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      if (currentUser) {
+        const loggedUser = { email: currentUser.email };
+        fetch("http://localhost:3030/getToken", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(loggedUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("after take token", data.token);
+            localStorage.setItem('token',data.token)
+          });
+      }
+      setLoading(false);
+    });
 
- 
-  return () => unsubscribe();
-}, []);
+    return () => unsubscribe();
+  }, []);
 
   const userAuth = {
     createUser,
@@ -55,7 +68,7 @@ function AuthProvider({ children }) {
     loginUser,
     signOutUser,
     user,
-    loading
+    loading,
   };
   return <AuthContext value={userAuth}>{children}</AuthContext>;
 }

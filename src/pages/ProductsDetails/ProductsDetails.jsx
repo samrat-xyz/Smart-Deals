@@ -287,7 +287,7 @@ function ProductsDetails() {
               </tr>
             </thead>
             {bids.map((bid,index) => (
-              <tbody key={bid._id}>
+              <tbody key={index}>
                 {/* row 1 */}
                 <tr>
                   <th>
